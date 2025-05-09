@@ -1,0 +1,7 @@
+# Ignore aux, log, out files generated when compiling the LaTeX
+*.aux
+*.log
+*.out
+
+# Ignore any PDFs generated
+*.pdf
