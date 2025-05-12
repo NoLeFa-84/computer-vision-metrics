@@ -36,3 +36,10 @@ jobs:
           root_file: main.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
+      - uses: actions/upload-artifact@v2
+        with:
+          name: main
+          path: main.pdf
+
+
+      
