@@ -7,8 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,14 +40,14 @@ jobs:
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
 
-      - name: Copy
-        run: |
-          mkdir out
-          cp ./main.pdf ./out/main.pdf
+      # - name: Copy
+      #   run: |
+      #     mkdir out
+      #     cp ./main.pdf ./out/main.pdf
       - uses: actions/upload-artifact@v4
         with:
           name: main
-          path: out/main.pdf
+          path: ./main.pdf
           
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
