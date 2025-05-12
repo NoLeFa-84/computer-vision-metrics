@@ -5,3 +5,4 @@
 
 # Ignore any PDFs generated
 *.pdf
+!main.pdf
