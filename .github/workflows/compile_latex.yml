@@ -36,14 +36,17 @@ jobs:
           root_file: main.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: Copy
-        run: |
-          mkdir out
-          cp ./main.pdf ./out/main.pdf
-      - uses: actions/upload-artifact@v4
-        with:
-          name: main
-          path: out/main.pdf
+          
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v5
+      # - name: Copy
+      #   run: |
+      #     mkdir out
+      #     cp ./main.pdf ./out/main.pdf
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: main
+      #     path: out/main.pdf
 
 
       
