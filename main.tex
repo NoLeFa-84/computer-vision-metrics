@@ -214,7 +214,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                     \begin{align}
                         F_1 &= \frac{2}{\textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
                         &= 2\ \frac{\textrm{Precision} \cdot \textrm{Recall}}{\textrm{Precision} + \textrm{Recall}}\\
-                        &= \frac{2\textrm{TP}}{2\textrm{TP} + \textrm{FP} + \textrm{FN}}
+                        &= \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
                     \end{align}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
@@ -448,7 +448,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                     \begin{align}
                         F_1 &= \frac{2}{\textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
                         &= 2\ \frac{\textrm{Precision} \cdot \textrm{Recall}}{\textrm{Precision} + \textrm{Recall}}\\
-                        &= \frac{2\textrm{TP}}{2\textrm{TP} + \textrm{FP} + \textrm{FN}}
+                        &= \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
                     \end{align}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
@@ -643,9 +643,19 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
     \subsection{Semantic segmentation}
         Basic task description.
-        \subsubsection{$F_1$-score aka Dice Similarity Coefficient}
+        \subsubsection{Dice Similarity Coefficient}
+            \textit{Also known as:} S{\o}rensen-Dice Index; S{\o}rensen Index; Dice's Coefficient; $F_1$-score when applied to Boolean data.
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
+                    \begin{align}
+                        DSC = \frac{2\left| X \cap Y \right|}{\left|X\right| + \left|X\right|}
+                    \end{align}
+                    where $X$ and $Y$ are sets with cardinalities (i.e. number of elements) $\left|X\right|$ and $\left|X\right|$ respectively.
+
+                    For Boolean data the DSC is identical to the $F_1$ score:
+                    \begin{align}
+                        DSC = \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
+                    \end{align}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -655,8 +665,13 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \bigskip
             \end{enumerate}
         \subsubsection{Jaccard Index}
+            \textit{Also known as:} Intersection over Union (IoU)
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
+                    \begin{align}
+                        J(A,B) &= \frac{\left|A \cap B\right|}{\left|A \cup B\right|}\\
+                        &= \frac{\left|A \cap B\right|}{\left|A\right| + \left|B\right| - \left|A \cap B\right|}
+                    \end{align}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -668,6 +683,9 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Pixel Accuracy}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
+                    \begin{align}
+                        \textrm{Pixel Accuracy} = \frac{\textrm{Number of correctly labeled pixels}}{\textrm{Total number of pixels}}
+                    \end{align}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -679,6 +697,24 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Haussdorf Distance aka Maximum Symmetric Surface Distance}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
+                    $(M, d)$ is a metric space, $X \subset M$ and $Y \subset M$ are two non-empty subsets of $M$. The Hausdorff distance between $X$ and $Y$ is defined as:
+                    \begin{align}
+                        d_{\textrm{H}}\left(X, Y\right) = \max
+                            \left\{
+                                \sup_{x \in X} d\left(x, Y\right),\
+                                \sup_{y \in Y} d\left(X, y\right)
+                            \right\}
+                    \end{align}
+                    where $\sup$ is the supremum operator, $d(a, B) = \inf_{b \in B} d(a, b)$, and $\inf$ is the infimum operator.
+
+                    Alternatively,
+                    \begin{align}
+                        d_{\textrm{H}}\left(X, Y\right) = \max
+                            \left\{
+                                \sup_{x \in X} \inf_{y \in Y} d(x, y),\ 
+                                \sup_{y \in Y} \inf_{x \in X} d(x, y)
+                            \right\}
+                    \end{align}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
