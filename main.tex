@@ -46,22 +46,95 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
 
 \section{Image Analysis Tasks}
-\subsection{Object detection}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
-
-\subsection{Object localisation}
+    \subsection{Object localisation}
     Basic task description. 
+
+    \subsubsection{Center-cover Criterion}
+        \begin{enumerate}[label=\alph*.]
+            \item \textit{Metric definition and/or formula:} 1 (hit) if the center of the ground truth reference object is within the bounding box or mask of the predicted detection; 0 (miss) otherwise.
+            \bigskip
+            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the ground truth reference object, which is simple for a bounding box but more complicated for a mask.
+            \bigskip
+            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+            \bigskip
+            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+            \bigskip
+        \end{enumerate}
+
+    \subsubsection{Center-hit criteria}
+        \begin{enumerate}[label=\alph*.]
+            \item \textit{Metric definition and/or formula:} 1 (hit) if the center of the predicted object is within the bounding box or mask of the ground truth reference object; 0 (miss) otherwise.
+            \bigskip
+            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the predicted object, which is simple for a bounding box but more complicated for a mask.
+            \bigskip
+            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+            \bigskip
+            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+            \bigskip
+        \end{enumerate}
+    
+    \subsubsection{Distance-based Hit Criterion}
+        \begin{enumerate}[label=\alph*.]
+            \item \textit{Metric definition and/or formula:} 1 (hit) if the distance $d$ between the bounding box or mask centers of the ground truth reference object and the predicted object are within distance threshold $\tau$; 0 (miss) otherwise.  
+            \bigskip
+            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center points for the ground truth reference object and the predicted object, which is simple for a bounding box but more complicated for a mask.
+            \bigskip
+            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+            \bigskip
+            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+            \bigskip
+        \end{enumerate}
+    
+    \subsubsection{Intersection-over-Union}
+        \begin{enumerate}[label=\alph*.]
+            \item \textit{Metric definition and/or formula:}
+            \bigskip
+            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+            \bigskip
+            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+            \bigskip
+            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+            \bigskip
+        \end{enumerate}
+    
+    \subsubsection{Box Intersection-over-Union}
+        \begin{enumerate}[label=\alph*.]
+            \item \textit{Metric definition and/or formula:}
+            \bigskip
+            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+            \bigskip
+            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+            \bigskip
+            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+            \bigskip
+        \end{enumerate}
+
+    \subsubsection{Mask Intersection-over-Union}
+        \begin{enumerate}[label=\alph*.]
+            \item \textit{Metric definition and/or formula:}
+            \bigskip
+            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+            \bigskip
+            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+            \bigskip
+            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+            \bigskip
+        \end{enumerate}
+    
+    \subsubsection{Boundary Intersection-over-Union}
+        \begin{enumerate}[label=\alph*.]
+            \item \textit{Metric definition and/or formula:}
+            \bigskip
+            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+            \bigskip
+            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+            \bigskip
+            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+            \bigskip
+        \end{enumerate}
+    
+
+
     \subsubsection{Metric}
         \begin{enumerate}[label=\alph*.]
             \item \textit{Metric definition and/or formula:}
@@ -74,188 +147,1234 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \bigskip
         \end{enumerate}
 
-\subsection{Object classification}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Object classification}
+        Assigning a label to an object in an image.
+        \subsubsection{Accuracy}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Precision}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Recall}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Specificity}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{$F_1$-score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{$F_\beta$-score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Balanced Accuracy}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Matthew's Correlation Coefficient}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Expected Cost}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{AUROC}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Negative Predictive Value}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Positive Likelihood Ratio}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Youden's Index J, aka Bookmaker Informedness}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Cohen's Kappa $\kappa$}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Weighted Cohen's Kappa $\kappa$}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Sensitivity@Specificity}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Expected Callibration Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Maximum Callibration Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Brier Score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Semantic segmentation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
 
-\subsection{Instance segmentation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Object detection}
+        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. 
 
-\subsection{Panoptic segmentation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+        \subsubsection{Accuracy}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Precision}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Recall}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Specificity}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{$F_1$-score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{$F_\beta$-score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Balanced Accuracy}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Matthew's Correlation Coefficient}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Expected Cost}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{AUROC}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Negative Predictive Value}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Positive Likelihood Ratio}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Youden's Index J, aka Bookmaker Informedness}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Cohen's Kappa $\kappa$}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Weighted Cohen's Kappa $\kappa$}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Sensitivity@Specificity}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Expected Callibration Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Maximum Callibration Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Brier Score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Average Precision}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Free-Response Receiver Operating Characteristic (FROC), FROC Score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Face analysis} \label{face_analysis}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Semantic segmentation}
+        Basic task description.
+        \subsubsection{$F_1$-score aka Dice Similarity Coefficient}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Jaccard Index}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Pixel Accuracy}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Haussdorf Distance aka Maximum Symmetric Surface Distance}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Hausdorff Distance 95\% Percentile}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Average Symmetric Surface Distance}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Average Surface Distance}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Boundary IoU}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Absolute/Relative Volume Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Symmetric Relative Volume Difference}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Centerline Coefficient}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Topology Precision}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Topology Sensitivity}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Surface Overlap}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Surface Dice}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Volumetric Dice}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Saliency detection}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
 
-\subsection{Scene graph generation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Instance segmentation}
+        Basic task description.
+        \subsubsection{Panoptic Quality}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Instance identification}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Image Regression}
+        Basic task description.
+        \subsubsection{Mean Absolute Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Root Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{$R^2$ Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Absolute Percentage Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Root Mean Squared Log Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Symmetric Mean Absolute Percentage Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Directional Accuracy}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Median Absolute Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Explained Variance Score}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        
 
-\subsection{Feature extraction}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Panoptic segmentation}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Geometric feature detection}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Face analysis} \label{face_analysis}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Image registration}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
-\subsection{Image stitching}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Saliency detection}
+        Basic task description.
+        \subsubsection{Increase in Confidence (IIC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Average Drop (AD)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Average Drop in Deletion}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Deletion Area Under Curve (DAUC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Insertion Area Under Curve (IAUC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Deletion Correlation (DC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Insertion Correlation (IC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Image similarity}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Scene graph generation}
+        Basic task description.
+        \subsubsection{Recall@K}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Recall@K}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{No Graph Constraint Recall@K}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Image retrieval (including cross modal retrieval)}
+    \subsection{Instance identification}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+    \subsection{Feature extraction}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+    \subsection{Geometric feature detection}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+    \subsection{Image registration}
+        Basic task description.
+        \subsubsection{Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mutual Information}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Normalized Mutual Information (NMI)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Normalized cross correlation (NCC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Modality Independent Neighborhood Descriptor}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+    \subsection{Image stitching}
+        Basic task description.
+        \subsubsection{Peak Signal-to-Noise Ratio (PSNR)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Structure Similarity Index Measurement (SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+    \subsection{Image similarity}
+        Basic task description.
+        \subsubsection{Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Root Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Normalized Mean Square Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Absolute Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Peak Signal-to-Noise Ratio (PSNR)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Structure Similarity Index Measurement (SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Multi-Scale Structural Similarity index (MS-SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Complex Wavelet Structural Similarity index (CW-SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Feature Similarity}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Universal Image Quality Index}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Learned Perceptual Image Patch Similarity (LPIPS)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Deep Image Structure and Texture Similarity (DISTS)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Information theoretic-based Statistic Similarity Measure (ISSM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Signal to reconstruction error ratio (SRE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Pearson Correlation Coefficient (PCC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mutual Information}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Normalized Mutual Information (NMI)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Spectral Angle Mapper}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+
+    \subsection{Image retrieval (including cross modal retrieval)}
     Basic task description.
     \subsubsection{Metric}
         \begin{enumerate}[label=\alph*.]
@@ -270,218 +1389,299 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \end{enumerate}
 
 \section{Spatial Analysis Tasks}
-\subsection{Depth estimation} \label{depth_estimation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Depth estimation} \label{depth_estimation}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Object / 3D reconstruction} \label{object_3d_reconstruction}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Object / 3D reconstruction} \label{object_3d_reconstruction}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Object pose estimation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Object pose estimation}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Camera pose estimation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Camera pose estimation}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{SLAM} \label{slam}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Structure from Motion}
+        Basic task description.
+        \subsubsection{Absolute Tracjectory Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Relative Pose Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+    \subsection{SLAM} \label{slam}
+        Simultaneously contructing or updating a map of an environment and estimating the robot's state (position, orientation, velocity) within said environment. 
+        \subsubsection{Metric}
+            \subsubsection{Absolute Tracjectory Error}
+                \begin{enumerate}[label=\alph*.]
+                    \item \textit{Metric definition and/or formula:}
+                    \bigskip
+                    \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                    \bigskip
+                    \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                    \bigskip
+                    \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                    \bigskip
+                \end{enumerate}
+        \subsubsection{Relative Pose Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Loop Closure Precision and Recall}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Map Consistency}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Map Density and Coverage}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        
 
 \section{Temporal analysis}
-\subsection{Optical flow estimation} \label{optical_flow_estimation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Optical flow estimation} \label{optical_flow_estimation}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Motion detection}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Motion detection}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Single object tracking}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Single object tracking}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Multiple object tracking}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Multiple object tracking}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Action recognition}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Action recognition}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Event detection} \label{event_detection}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Event detection} \label{event_detection}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{(Multiple) Object re-identification}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{(Multiple) Object re-identification}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Visual Odometry}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Visual Odometry}
+        Estimate the state (position, orientation, velocity) of a robot within an environment using camera measurements. Can be used as part of Visual Simultaneous Location and Mapping. 
+        \subsubsection{Absolute Tracjectory Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Relative Pose Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Change detection}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Change detection}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Deep fake detection}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Deep fake detection}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Video summarisation}
+    \subsection{Video summarisation}
     Basic task description.
     \subsubsection{Metric}
         \begin{enumerate}[label=\alph*.]
@@ -496,105 +1696,514 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \end{enumerate}
 
 \section{Image Generation Tasks}
-\subsection{Image creation} \label{image_creation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Image creation} \label{image_creation}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Image denoising} \label{image_denoising}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Image denoising} \label{image_denoising}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Root Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Peak Signal-to-Noise Ratio (PSNR)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Structure Similarity Index Measurement (SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Multi-Scale Structural Similarity index (MS-SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Feature Similarity}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Universal Image Quality Index}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Deep Image Structure and Texture Similarity (DISTS)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Information theoretic-based Statistic Similarity Measure (ISSM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Signal to reconstruction error ratio (SRE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Visual information fidelity (VIF)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Blind/Referenceless Image Spatial Quality Evaluator (BRISQUE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Natural Image Quality Evaluator (NIQE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Perception-based Image Quality Evaluator (PIQE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Model Specialization Metric (MSM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+    
 
-\subsection{Super-resolution} \label{super_resolution}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Super-resolution} \label{super_resolution}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Image inpainting} \label{image_inpainting}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Image inpainting} \label{image_inpainting}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Image-to-image translation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Image-to-image translation}
+        Basic task description.
+        \subsubsection{Mean Squared Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Normalized Mean Square Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Absolute Error}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Peak Signal-to-Noise Ratio (PSNR)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Structure Similarity Index Measurement (SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Multi-Scale Structural Similarity index (MS-SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Complex Wavelet Structural Similarity index (CW-SSIM)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Learned Perceptual Image Patch Similarity (LPIPS)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Deep Image Structure and Texture Similarity (DISTS)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Pearson Correlation Coefficient (PCC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Normalized Mutual Information (NMI)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Style transfer}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+        \subsubsection{FCNScore}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{SAMScore}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Blur (MB)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Blur Ratio (BR)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Natural Image Quality Evaluator (NIQE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Blur Effect (BE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Variance of Laplacian}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Blurred Edge Widths (BEW)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Cumulative Probability of Blur Detection (CPBD)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Line Correlation (MLC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Mean Shifted Line Correlation (MSLC)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        \subsubsection{Just Noticeable Blur (JNB)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Object swapping}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Style transfer}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Novel view synthesis} \label{novel_view_synthesis}
+    \subsection{Object swapping}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+    \subsection{Novel view synthesis} \label{novel_view_synthesis}
     Basic task description.
     \subsubsection{Metric}
         \begin{enumerate}[label=\alph*.]
@@ -609,35 +2218,35 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \end{enumerate}
 
 \section{Video Generation Tasks}
-\subsection{Video enhancement}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Video enhancement}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Video stabilisation}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Video stabilisation}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Talking head generation}
+    \subsection{Talking head generation}
     Basic task description.
     \subsubsection{Metric}
         \begin{enumerate}[label=\alph*.]
@@ -652,49 +2261,49 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \end{enumerate}
 
 \section{Multi-modal Tasks}
-\subsection{Visual question answering}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Visual question answering}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Image captioning}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Image captioning}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{Visual grounding} \label{visual_grounding}
-    Basic task description.
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{Visual grounding} \label{visual_grounding}
+        Basic task description.
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-\subsection{RGB-depth fusion} \label{rgb_depth_fusion}
+    \subsection{RGB-depth fusion} \label{rgb_depth_fusion}
     Basic task description.
     \subsubsection{Metric}
         \begin{enumerate}[label=\alph*.]
