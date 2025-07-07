@@ -48,11 +48,11 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
 \section{Image Analysis Tasks}
     \subsection{Object localisation}
-    Basic task description. 
+    Locating and demarcating an instance of an object within an image, using for instance a bounding box
 
     \subsubsection{Center-cover Criterion}
         \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:} 1 (hit) if the center of the ground truth reference object is within the bounding box or mask of the predicted detection; 0 (miss) otherwise.
+            \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the ground truth reference object is within the bounding box or mask of the predicted detection; 0 (miss) otherwise.
             \bigskip
             \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the ground truth reference object, which is simple for a bounding box but more complicated for a mask.
             \bigskip
@@ -62,9 +62,9 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \bigskip
         \end{enumerate}
 
-    \subsubsection{Center-hit criteria}
+    \subsubsection{Center-hit Criterion}
         \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:} 1 (hit) if the center of the predicted object is within the bounding box or mask of the ground truth reference object; 0 (miss) otherwise.
+            \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the predicted object is within the bounding box or mask of the ground truth reference object; 0 (miss) otherwise.
             \bigskip
             \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the predicted object, which is simple for a bounding box but more complicated for a mask.
             \bigskip
@@ -133,8 +133,6 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
             \bigskip
         \end{enumerate}
-    
-
 
     \subsubsection{Metric}
         \begin{enumerate}[label=\alph*.]
@@ -318,28 +316,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Cohen's Kappa $\kappa$}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Weighted Cohen's Kappa $\kappa$}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
+
         \subsubsection{Sensitivity@Specificity}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -387,22 +364,8 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
 
     \subsection{Object detection}
-        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. 
+        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localisation criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.  
 
-        \subsubsection{Accuracy}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                    \begin{equation}
-                        \textrm{Accuracy} = \frac{\textrm{TP} + \textrm{TN}}{\textrm{TP} + \textrm{FP} + \textrm{TN} + \textrm{FN}}
-                    \end{equation}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
         \subsubsection{Precision}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -552,28 +515,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Cohen's Kappa $\kappa$}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Weighted Cohen's Kappa $\kappa$}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
+
         \subsubsection{Sensitivity@Specificity}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -672,6 +614,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                         J(A,B) &= \frac{\left|A \cap B\right|}{\left|A \cup B\right|}\\
                         &= \frac{\left|A \cap B\right|}{\left|A\right| + \left|B\right| - \left|A \cap B\right|}
                     \end{align}
+                    Need to know: how is this used in practice? Is it calculated across each section of the image, across all images simultaneously. How to handle multiple segmentation labels. When to average the results. Or are the mathematically equivalent. 
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -694,27 +637,26 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Haussdorf Distance aka Maximum Symmetric Surface Distance}
+        \subsubsection{Haussdorff Distance aka Maximum Symmetric Surface Distance}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    $(M, d)$ is a metric space, $X \subset M$ and $Y \subset M$ are two non-empty subsets of $M$. The Hausdorff distance between $X$ and $Y$ is defined as:
+                    
+                    The distance between a voxel $a$ and a set of voxels $B$ is first defined as
                     \begin{align}
-                        d_{\textrm{H}}\left(X, Y\right) = \max
-                            \left\{
-                                \sup_{x \in X} d\left(x, Y\right),\
-                                \sup_{y \in Y} d\left(X, y\right)
-                            \right\}
+                        d(a, B) = \min_{b \in B} d(a, b) \label{distance_element_a_to_set_B_minimum}
                     \end{align}
-                    where $\sup$ is the supremum operator, $d(a, B) = \inf_{b \in B} d(a, b)$, and $\inf$ is the infimum operator.
+                    where $d(a, b)$ is the Euclidean distance between two voxels incorporating the real spatial resolution of the image \cite{yeghiazaryan2018family}. \textit{Question: this would thus require depth information; and the calculation would be simple for relatively flat images e.g. dermatology images, but much more difficult for those with wider depth distributions.}
 
-                    Alternatively,
                     \begin{align}
                         d_{\textrm{H}}\left(X, Y\right) = \max
                             \left\{
-                                \sup_{x \in X} \inf_{y \in Y} d(x, y),\ 
-                                \sup_{y \in Y} \inf_{x \in X} d(x, y)
+                                \max_{x \in \partial X} d\left(x, \partial Y\right),\
+                                \max_{y \in \partial Y} d\left(X, \partial y\right)
                             \right\}
                     \end{align}
+                    
+                    where $\partial X$ and $\partial Y$ are the boundaries of regions $X$ and $Y$ respectively. The boundary pixels are defined as those with at least one neighbouring pixel outside the region \cite{yeghiazaryan2018family}. 
+
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -737,6 +679,12 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Average Symmetric Surface Distance}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
+                With $d(a,B)$ defined by Equation \ref{distance_element_a_to_set_B_minimum} the Average Symmetric Surface Distance is defined as
+                \begin{align}
+                    \textrm{ASSD}(X, Y) = \frac{\sum\limits_{x \in \partial X} d(x,\partial Y) + \sum\limits_{y \in \partial Y} d(y, \partial X)}{\left| \partial X \right| + \left| \partial Y \right|}
+                \end{align}
+                where $\partial X$ and $\partial Y$ are the boundaries of regions $X$ and $Y$ respectively. The boundary pixels are defined as those with at least one neighbouring pixel outside the region \cite{yeghiazaryan2018family}.
+
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -2398,5 +2346,10 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
             \bigskip
         \end{enumerate}
+
+
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
 
 \end{document}
