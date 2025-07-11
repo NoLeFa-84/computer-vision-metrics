@@ -47,107 +47,121 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
 
 \section{Image Analysis Tasks}
-    \subsection{Object localisation}
-    Locating and demarcating an instance of an object within an image, using for instance a bounding box
+    \subsection{Object localization} \label{object_localization}
+    Locating and demarcating an instance of an object within an image, using for instance a bounding box.
+        
+        \subsubsection{Intersection-over-Union}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \begin{align}
+                    J(A,B) &= \frac{\left|A \cap B\right|}{\left|A \cup B\right|}\\
+                    &= \frac{\left|A \cap B\right|}{\left|A\right| + \left|B\right| - \left|A \cap B\right|} \label{intersection_over_union}
+                \end{align}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        
+        \subsubsection{Box Intersection-over-Union}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                Box-IoU is IoU when the predicted object and ground truth reference objects are delimited by bounding boxes. The metric is calculated using Eq. \ref{intersection_over_union}.
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-    \subsubsection{Center-cover Criterion}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the ground truth reference object is within the bounding box or mask of the predicted detection; 0 (miss) otherwise.
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the ground truth reference object, which is simple for a bounding box but more complicated for a mask.
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+        \subsubsection{Mask Intersection-over-Union}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                Mask-IoU is IoU when the predicted object and ground truth reference objects are delimited by pixel masks. The metric is calculated using Eq. \ref{intersection_over_union}.
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        
+        \subsubsection{Boundary Intersection-over-Union}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                Instead of using the full areas of the predicted object and ground truth reference objects Boundary IoU uses only the areas within a certain distance $d$ of the borders of each object.  
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                Parameter $d$, the distance from the object boundary that should be considered for the metric calculation.
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-    \subsubsection{Center-hit Criterion}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the predicted object is within the bounding box or mask of the ground truth reference object; 0 (miss) otherwise.
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the predicted object, which is simple for a bounding box but more complicated for a mask.
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+        \subsubsection{Metric}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
     
-    \subsubsection{Distance-based Hit Criterion}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:} 1 (hit) if the distance $d$ between the bounding box or mask centers of the ground truth reference object and the predicted object are within distance threshold $\tau$; 0 (miss) otherwise.  
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center points for the ground truth reference object and the predicted object, which is simple for a bounding box but more complicated for a mask.
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
-    
-    \subsubsection{Intersection-over-Union}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
-    
-    \subsubsection{Box Intersection-over-Union}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+    \subsection{\textit{Object Localization Criteria}}
+        When conducting object detection tasks it is necessary to determine if a predicted object and a reference object are a successful match (Hit, True Positive), or not (Miss, False Positive). This requires an object localization criteria. In addition to the three center-based localization criteria here, you can also use one of the object localization metrics from Section \ref{object_localization} combined with a threshold, above which the predicted object is considered a Hit/True Positive.
+        \subsubsection{Center-cover Criterion}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the ground truth reference object is within the bounding box or mask of the predicted detection; 0 (miss) otherwise.
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the ground truth reference object, which is simple for a bounding box but more complicated for a mask.
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
 
-    \subsubsection{Mask Intersection-over-Union}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
+        \subsubsection{Center-hit Criterion}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the predicted object is within the bounding box or mask of the ground truth reference object; 0 (miss) otherwise.
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the predicted object, which is simple for a bounding box but more complicated for a mask.
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        
+        \subsubsection{Distance-based Hit Criterion}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:} 1 (hit) if the distance $d$ between the bounding box or mask centers of the ground truth reference object and the predicted object are within distance threshold $\tau$; 0 (miss) otherwise.  
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center points for the ground truth reference object and the predicted object, which is simple for a bounding box but more complicated for a mask.
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+    \subsection{\textit{Assignment Strategies}}
+        When conducting object detection tasks there can be many predicted objects and ground truth reference objects in a single image. It is thus necessary to perform an assignment step, where each predicted object is paired to a ground truth reference object.
+        \subsubsection{Greedy by Score}
+        \subsubsection{Hungarian Matching}
     
-    \subsubsection{Boundary Intersection-over-Union}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
-
-    \subsubsection{Metric}
-        \begin{enumerate}[label=\alph*.]
-            \item \textit{Metric definition and/or formula:}
-            \bigskip
-            \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-            \bigskip
-            \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-            \bigskip
-            \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-            \bigskip
-        \end{enumerate}
-
     \subsection{Object classification}
-        Assigning a label to an object in an image.
+        Assigning a label to an object in an image. 
         \subsubsection{Accuracy}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -364,7 +378,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
 
     \subsection{Object detection}
-        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localisation criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.  
+        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localization criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.  
 
         \subsubsection{Precision}
             \begin{enumerate}[label=\alph*.]
@@ -610,11 +624,22 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \textit{Also known as:} Intersection over Union (IoU)
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
+                    The Jaccard index formula is defined as per Equation \ref{intersection_over_union}. An alternative formulation following \cite{long2015fully} is as follows: let $n_{ij}$ be the number of pixels of class $i$ that are labeled as class $j$ (thus making $n_{ii}$ the number of correctly labeled pixels of class $i$). Then let $t_i = \sum_{j} n_{ij}$ be the total number of pixels of class $i$. The Jaccard Index/IoU for one class is thus
                     \begin{align}
-                        J(A,B) &= \frac{\left|A \cap B\right|}{\left|A \cup B\right|}\\
-                        &= \frac{\left|A \cap B\right|}{\left|A\right| + \left|B\right| - \left|A \cap B\right|}
+                        \textrm{IoU}_i = \frac{n_{ii}}{t_i + \sum_j n_{ji} - n_{ii}}
                     \end{align}
-                    Need to know: how is this used in practice? Is it calculated across each section of the image, across all images simultaneously. How to handle multiple segmentation labels. When to average the results. Or are the mathematically equivalent. 
+                    
+                    Across multiple classes the \textbf{mean intersection over union} is defined as
+                    \begin{align}
+                        \textrm{mean IoU} = \frac{1}{n_\textrm{cl}} \sum_{i} \frac{n_{ii}}{t_i + \sum_j n_{ji} - n_{ii}}
+                    \end{align}
+                    where $n_\textrm{cl}$ is the number of classes.
+                    Open questions:
+                    \begin{itemize}
+                        \item Is this calculated per image, and then averaged? Or are all the pixels from all the images in the set combined and the calculation done over all of them simultaneously?
+                        \item Is $n_\textrm{cl}$ the number of classes present in the ground truth labels? Or the combination of the ground truth labels and the predicted labels (i.e. what if the SiS system has a wider variety of labels than the dataset)?
+                        \item How are multiple segmentation labels handled?
+                    \end{itemize} 
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
