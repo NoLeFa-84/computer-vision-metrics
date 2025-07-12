@@ -31,7 +31,7 @@
 Here we present a number of tasks in computer vision and detail the metrics applicable to them. The tasks are organized into categories. Within each metric-applied-to-task there are four points that should be covered, as shown in the example in Section \ref{example_metric_applied_to_task}. Comments can be made using the \verb+\textcomment{}+ command like so: \textcomment{Comments can be used for ideas or references to papers.}
 
 \subsection{Example CV Task} \label{example_cv_task}
-    Basic task description. 
+    Basic task description.
     \subsubsection{Metric} \label{example_metric_applied_to_task}
     Details of the metric as applied to the given CV task. Points that should be covered:
     \begin{enumerate}[label=\alph*.]
@@ -49,7 +49,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 \section{Image Analysis Tasks}
     \subsection{Object localization} \label{object_localization}
     Locating and demarcating an instance of an object within an image, using for instance a bounding box.
-        
+
         \subsubsection{Intersection-over-Union}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -65,7 +65,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        
+
         \subsubsection{Box Intersection-over-Union}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -91,11 +91,11 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        
+
         \subsubsection{Boundary Intersection-over-Union}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                Instead of using the full areas of the predicted object and ground truth reference objects Boundary IoU uses only the areas within a certain distance $d$ of the borders of each object.  
+                Instead of using the full areas of the predicted object and ground truth reference objects Boundary IoU uses only the areas within a certain distance $d$ of the borders of each object.
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 Parameter $d$, the distance from the object boundary that should be considered for the metric calculation.
@@ -117,7 +117,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-    
+
     \subsection{\textit{Object Localization Criteria}}
         When conducting object detection tasks it is necessary to determine if a predicted object and a reference object are a successful match (Hit, True Positive), or not (Miss, False Positive). This requires an object localization criteria. In addition to the three center-based localization criteria here, you can also use one of the object localization metrics from Section \ref{object_localization} combined with a threshold, above which the predicted object is considered a Hit/True Positive.
         \subsubsection{Center-cover Criterion}
@@ -143,10 +143,10 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        
+
         \subsubsection{Distance-based Hit Criterion}
             \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:} 1 (hit) if the distance $d$ between the bounding box or mask centers of the ground truth reference object and the predicted object are within distance threshold $\tau$; 0 (miss) otherwise.  
+                \item \textit{Metric definition and/or formula:} 1 (hit) if the distance $d$ between the bounding box or mask centers of the ground truth reference object and the predicted object are within distance threshold $\tau$; 0 (miss) otherwise.
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center points for the ground truth reference object and the predicted object, which is simple for a bounding box but more complicated for a mask.
                 \bigskip
@@ -159,15 +159,12 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         When conducting object detection tasks there can be many predicted objects and ground truth reference objects in a single image. It is thus necessary to perform an assignment step, where each predicted object is paired to a ground truth reference object.
         \subsubsection{Greedy by Score}
         \subsubsection{Hungarian Matching}
-    
+
     \subsection{Object classification}
-        Assigning a label to an object in an image. 
+        Assigning a label to an object in an image.
         \subsubsection{Accuracy}
             \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                    \begin{equation}
-                        \textrm{Accuracy} = \frac{\textrm{TP} + \textrm{TN}}{\textrm{TP} + \textrm{FP} + \textrm{TN} + \textrm{FN}}
-                    \end{equation}
+                \item \textit{Metric definition and/or formula:} See formula in \ref{formula:accuracy}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -176,12 +173,11 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Precision}
+        \subsubsection{Precision, recall, specificity}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    \begin{equation}
-                        \textrm{Precision} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FP}}
-                    \end{equation}
+
+                See formulas in \ref{formula:precision} for precision, in \ref{formula:recall} for recall, in \ref{formula:specificity} for specificity
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -190,63 +186,15 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Recall}
-            \textit{Also known as:} Sensitivity, True Positive Rate.
+        \subsubsection{$F_1$-score, $F_\beta$-score}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    \begin{equation}
-                        \textrm{Recall} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FN}}
-                    \end{equation}
+
+                See formula in \ref{formula:f1} for F1, in \ref{formula:fbeta} for $F_\beta$
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Specificity}
-            \textit{Also known as:} True Negative Rate.
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                    \begin{equation}
-                        \textrm{Recall} = \frac{\textrm{TN}}{\textrm{TN} + \textrm{FP}}
-                    \end{equation}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{$F_1$-score}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                    \begin{align}
-                        F_1 &= \frac{2}{\textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
-                        &= 2\ \frac{\textrm{Precision} \cdot \textrm{Recall}}{\textrm{Precision} + \textrm{Recall}}\\
-                        &= \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
-                    \end{align}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{$F_\beta$-score}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                    \begin{align}
-                        F_1 &= \frac{\beta^2 + 1}{\beta^2 \cdot \textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
-                        &= \frac{(1+\beta^2)\cdot\textrm{Precision} \cdot \textrm{Recall}}{\beta^2\cdot\textrm{Precision} + \textrm{Recall}}\\
-                        &= \frac{(1+\beta^2)\cdot\textrm{TP}}{(1+\beta^2)\cdot\textrm{TP} + \textrm{FP} + \beta^2\cdot\textrm{FN}}
-                    \end{align}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                Hyperparameter $\beta$ which controls the relative importance of Recall versus Precision. $\beta=1$ weights them equally and reduces $F_\beta$ to $F_1$-score as above; $\beta>1$ gives more importance to Recall; and $\beta < 1$ gives more importance to Precision. 
+
+                For $F_\beta$: $\beta$ (see \ref{formula:fbeta})
                 \bigskip
                 \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
                 \bigskip
@@ -378,14 +326,13 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
 
     \subsection{Object detection}
-        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localization criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.  
+        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localization criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.
 
-        \subsubsection{Precision}
+        \subsubsection{Precision, Recall}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    \begin{equation}
-                        \textrm{Precision} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FP}}
-                    \end{equation}
+
+                See formula in \ref{formula:precision} for precision, in \ref{formula:recall} for recall
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -394,58 +341,15 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Recall}
+        \subsubsection{$F_1$-score, $F_\beta$-score}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    \begin{equation}
-                        \textrm{Recall} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FN}}
-                    \end{equation}
+
+                See formula in \ref{formula:f1} for F1, in \ref{formula:fbeta} for $F_\beta$
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Specificity}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{$F_1$-score}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                    \begin{align}
-                        F_1 &= \frac{2}{\textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
-                        &= 2\ \frac{\textrm{Precision} \cdot \textrm{Recall}}{\textrm{Precision} + \textrm{Recall}}\\
-                        &= \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
-                    \end{align}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{$F_\beta$-score}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                    \begin{align}
-                        F_1 &= \frac{\beta^2 + 1}{\beta^2 \cdot \textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
-                        &= \frac{(1+\beta^2)\cdot\textrm{Precision} \cdot \textrm{Recall}}{\beta^2\cdot\textrm{Precision} + \textrm{Recall}}\\
-                        &= \frac{(1+\beta^2)\cdot\textrm{TP}}{(1+\beta^2)\cdot\textrm{TP} + \textrm{FP} + \beta^2\cdot\textrm{FN}}
-                    \end{align}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                Hyperparameter $\beta$ which controls the relative importance of Recall versus Precision. $\beta=1$ weights them equally and reduces $F_\beta$ to $F_1$-score as above; $\beta>1$ gives more importance to Recall; and $\beta < 1$ gives more importance to Precision.
+
+                For $F_\beta$: $\beta$ (see \ref{formula:fbeta})
                 \bigskip
                 \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
                 \bigskip
@@ -628,7 +532,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                     \begin{align}
                         \textrm{IoU}_i = \frac{n_{ii}}{t_i + \sum_j n_{ji} - n_{ii}}
                     \end{align}
-                    
+
                     Across multiple classes the \textbf{mean intersection over union} is defined as
                     \begin{align}
                         \textrm{mean IoU} = \frac{1}{n_\textrm{cl}} \sum_{i} \frac{n_{ii}}{t_i + \sum_j n_{ji} - n_{ii}}
@@ -639,7 +543,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                         \item Is this calculated per image, and then averaged? Or are all the pixels from all the images in the set combined and the calculation done over all of them simultaneously?
                         \item Is $n_\textrm{cl}$ the number of classes present in the ground truth labels? Or the combination of the ground truth labels and the predicted labels (i.e. what if the SiS system has a wider variety of labels than the dataset)?
                         \item How are multiple segmentation labels handled?
-                    \end{itemize} 
+                    \end{itemize}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -665,7 +569,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Haussdorff Distance aka Maximum Symmetric Surface Distance}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    
+
                     The distance between a voxel $a$ and a set of voxels $B$ is first defined as
                     \begin{align}
                         d(a, B) = \min_{b \in B} d(a, b) \label{distance_element_a_to_set_B_minimum}
@@ -679,8 +583,8 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                                 \max_{y \in \partial Y} d\left(X, \partial y\right)
                             \right\}
                     \end{align}
-                    
-                    where $\partial X$ and $\partial Y$ are the boundaries of regions $X$ and $Y$ respectively. The boundary pixels are defined as those with at least one neighbouring pixel outside the region \cite{yeghiazaryan2018family}. 
+
+                    where $\partial X$ and $\partial Y$ are the boundaries of regions $X$ and $Y$ respectively. The boundary pixels are defined as those with at least one neighbouring pixel outside the region \cite{yeghiazaryan2018family}.
 
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
@@ -956,7 +860,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        
+
 
     \subsection{Panoptic segmentation}
         Basic task description.
@@ -1525,7 +1429,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \bigskip
             \end{enumerate}
     \subsection{SLAM} \label{slam}
-        Simultaneously contructing or updating a map of an environment and estimating the robot's state (position, orientation, velocity) within said environment. 
+        Simultaneously contructing or updating a map of an environment and estimating the robot's state (position, orientation, velocity) within said environment.
         \subsubsection{Metric}
             \subsubsection{Absolute Tracjectory Error}
                 \begin{enumerate}[label=\alph*.]
@@ -1582,7 +1486,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        
+
 
 \section{Temporal analysis}
     \subsection{Optical flow estimation} \label{optical_flow_estimation}
@@ -1684,7 +1588,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \end{enumerate}
 
     \subsection{Visual Odometry}
-        Estimate the state (position, orientation, velocity) of a robot within an environment using camera measurements. Can be used as part of Visual Simultaneous Location and Mapping. 
+        Estimate the state (position, orientation, velocity) of a robot within an environment using camera measurements. Can be used as part of Visual Simultaneous Location and Mapping.
         \subsubsection{Absolute Tracjectory Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -1943,7 +1847,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-    
+
 
     \subsection{Super-resolution} \label{super_resolution}
         Basic task description.
@@ -2372,7 +2276,61 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \bigskip
         \end{enumerate}
 
+\clearpage
 
+\appendix
+
+\section{Base formulas}
+
+\subsection{Accuracy}\label{formula:accuracy}
+
+\begin{equation}
+    \textrm{Accuracy} = \frac{\textrm{TP} + \textrm{TN}}{\textrm{TP} + \textrm{FP} + \textrm{TN} + \textrm{FN}}
+\end{equation}
+
+\subsection{Precision}\label{formula:precision}
+
+\begin{equation}
+    \textrm{Precision} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FP}}
+\end{equation}
+
+\subsection{Recall}\label{formula:recall}
+
+\textit{Also known as:} Sensitivity, True Positive Rate.
+
+\begin{equation}
+    \textrm{Recall} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FN}}
+\end{equation}
+
+\subsection{Specificity}\label{formula:specificity}
+
+\textit{Also known as:} True Negative Rate.
+
+\begin{equation}
+    \textrm{Specificity} = \frac{\textrm{TN}}{\textrm{TN} + \textrm{FP}}
+\end{equation}
+
+\subsection{F1 score}\label{formula:f1}
+
+\begin{align}
+    F_1 &= \frac{2}{\textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
+    &= 2\ \frac{\textrm{Precision} \cdot \textrm{Recall}}{\textrm{Precision} + \textrm{Recall}}\\
+    &= \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
+\end{align}
+
+\subsection{$F_\beta$ score}\label{formula:fbeta}
+
+\begin{align}
+    F_\beta &= \frac{\beta^2 + 1}{\beta^2 \cdot \textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
+    &= \frac{(1+\beta^2)\cdot\textrm{Precision} \cdot \textrm{Recall}}{\beta^2\cdot\textrm{Precision} + \textrm{Recall}}\\
+    &= \frac{(1+\beta^2)\cdot\textrm{TP}}{(1+\beta^2)\cdot\textrm{TP} + \textrm{FP} + \beta^2\cdot\textrm{FN}}
+\end{align}
+
+\textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+
+\begin{itemize}
+    \item Hyperparameter $\beta$ which controls the relative importance of Recall versus Precision. $\beta=1$ weights them equally and reduces $F_\beta$ to $F_1$-score as above; $\beta>1$ gives more importance to Recall; and $\beta < 1$ gives more importance to Precision.
+\end{itemize}
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
