@@ -165,7 +165,9 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         Assigning a label to an object in an image.
         \subsubsection{Accuracy}
             \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:} See formula in \ref{formula:accuracy}
+                \item \textit{Metric definition and/or formula:}
+
+                See formula in \ref{formula:accuracy}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -174,11 +176,11 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Precision, recall, specificity}
+        \subsubsection{Precision, recall, specificity, Negative Predictive Value}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
 
-                See formulas in \ref{formula:precision} for precision, in \ref{formula:recall} for recall, in \ref{formula:specificity} for specificity
+                See formulas in \ref{formula:precision} for precision, in \ref{formula:recall} for recall, in \ref{formula:specificity} for specificity, in \ref{formula:npv} for Negative Predictive Value
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -202,20 +204,11 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Balanced Accuracy}
+        \subsubsection{Balanced accuracy, Matthews Correlation Coefficient, Positive Likelihood Ratio, Negative Likelihood Ratio, Youden's Index}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Matthew's Correlation Coefficient}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
+
+                See formula in \ref{formula:balanced_accuracy} for balanced accuracy, in \ref{formula:mcc} for Matthews Correlation Coefficient, in \ref{formula:lr+} for Positive Likelihood Ratio, in \ref{formula:lr-} for Negative Likelihood Ratio, in \ref{formula:youden} for Youden's Index
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -236,39 +229,6 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \bigskip
             \end{enumerate}
         \subsubsection{AUROC}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Negative Predictive Value}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Positive Likelihood Ratio}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Youden's Index J, aka Bookmaker Informedness}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
                 \bigskip
@@ -357,28 +317,6 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Balanced Accuracy}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Matthew's Correlation Coefficient}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
         \subsubsection{Expected Cost}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -401,29 +339,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Negative Predictive Value}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Positive Likelihood Ratio}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Youden's Index J, aka Bookmaker Informedness}
+        \subsubsection{}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
                 \bigskip
@@ -2291,35 +2207,39 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 \clearpage
 \section{Base formulas}
 
-\subsection{Accuracy}\label{formula:accuracy}
+\subsection{Formulas based on TP / FP / TN / FN}
+
+\subsubsection{Accuracy}\label{formula:accuracy}
 
 \begin{equation}
     \textrm{Accuracy} = \frac{\textrm{TP} + \textrm{TN}}{\textrm{TP} + \textrm{FP} + \textrm{TN} + \textrm{FN}}
 \end{equation}
 
-\subsection{Precision}\label{formula:precision}
+\subsubsection{Precision = Positive Predictive Value}\label{formula:precision}
 
 \begin{equation}
     \textrm{Precision} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FP}}
 \end{equation}
 
-\subsection{Recall}\label{formula:recall}
-
-\textit{Also known as:} Sensitivity, True Positive Rate.
+\subsubsection{Recall = Sensitivity = True Positive Rate}\label{formula:recall}
 
 \begin{equation}
     \textrm{Recall} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FN}}
 \end{equation}
 
-\subsection{Specificity}\label{formula:specificity}
-
-\textit{Also known as:} True Negative Rate.
+\subsubsection{Specificity = Selectivity = True Negative Rate}\label{formula:specificity}
 
 \begin{equation}
     \textrm{Specificity} = \frac{\textrm{TN}}{\textrm{TN} + \textrm{FP}}
 \end{equation}
 
-\subsection{F1 score}\label{formula:f1}
+\subsubsection{Negative Predictive Value}\label{formula:npv}
+
+\begin{equation}
+    \textrm{NPV} = \frac{\textrm{TN}}{\textrm{TN} + \textrm{FN}}
+\end{equation}
+
+\subsubsection{F1 score}\label{formula:f1}
 
 \begin{align}
     F_1 &= \frac{2}{\textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
@@ -2327,7 +2247,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
     &= \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
 \end{align}
 
-\subsection{$F_\beta$ score}\label{formula:fbeta}
+\subsubsection{$F_\beta$ score}\label{formula:fbeta}
 
 \begin{align}
     F_\beta &= \frac{\beta^2 + 1}{\beta^2 \cdot \textrm{Recall}^{-1} + \textrm{Precision}^{-1}}\\
@@ -2340,6 +2260,36 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 \begin{itemize}
     \item Hyperparameter $\beta$ which controls the relative importance of Recall versus Precision. $\beta=1$ weights them equally and reduces $F_\beta$ to $F_1$-score as above; $\beta>1$ gives more importance to Recall; and $\beta < 1$ gives more importance to Precision.
 \end{itemize}
+
+\subsubsection{Balanced accuracy}\label{formula:balanced_accuracy}
+
+\begin{equation}
+    BalancedAccuracy = \frac{Sensitivity + Specificity}{2}
+\end{equation}
+
+\subsubsection{Matthews Correlation Coefficient}\label{formula:mcc}
+
+\begin{equation}
+    MCC = \frac{TN \cdot TP - FN \cdot FP}{\sqrt{(TP+FP) (TP+FN) (TN+FP) (TN+FN)}}
+\end{equation}
+
+\subsubsection{Positive Likelihood Ratio}\label{formula:lr+}
+
+\begin{equation}
+    LR+ = \frac{Sensitivity}{1 - Specificity}
+\end{equation}
+
+\subsubsection{Negative Likelihood Ratio}\label{formula:lr-}
+
+\begin{equation}
+    LR- = \frac{1 - Sensitivity}{Specificity}
+\end{equation}
+
+\subsubsection{Youden's Index = Youden's J statistic = Bookmaker Informedness}\label{formula:youden}
+
+\begin{equation}
+    J = Sensitivity + Specificity - 1
+\end{equation}
 
 \subsection{Intersection-over-Union, aka Jaccard Index}\label{formula:iou}
 
