@@ -217,6 +217,9 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
+
+    \subsection{Object classification with confidence}
+        Assigning a label and probability to an object in an image.
         \subsubsection{Expected Cost}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -287,7 +290,9 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
 
     \subsection{Object detection}
-        Detecting one or multiple instances of a given object class in an image. Requires both localizing the instance within the image, and determining the label of the instance. When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localization criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.
+        Detecting one or multiple instances of a given object class in an image, outputting for each instance its bounding box and its label. Requires both localizing the instance within the image, and determining the label of the instance.
+
+        When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localization criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.
 
         \subsubsection{Precision, Recall}
             \begin{enumerate}[label=\alph*.]
@@ -317,6 +322,9 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
+
+    \subsection{Object detection with confidence}
+        Detecting one or multiple instances of a given object class in an image, outputting for each instance its bounding box, its label and a confidence score.
         \subsubsection{Expected Cost}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -339,17 +347,6 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
 
         \subsubsection{Sensitivity@Specificity}
             \begin{enumerate}[label=\alph*.]
@@ -362,7 +359,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Expected Callibration Error}
+        \subsubsection{Expected Calibration Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
                 \bigskip
@@ -373,7 +370,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{Maximum Callibration Error}
+        \subsubsection{Maximum Calibration Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
                 \bigskip
