@@ -667,29 +667,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 
     \subsection{Image Regression}
         Basic task description.
-        \subsubsection{Mean Absolute Error}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Mean Squared Error}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Root Mean Squared Error}
+        \subsubsection{Mean Absolute Error, Mean Squared Error, Root Mean Squared Error, Mean Absolute Percentage Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
                 \bigskip
@@ -701,17 +679,6 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \bigskip
             \end{enumerate}
         \subsubsection{$R^2$ Error}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-        \subsubsection{Mean Absolute Percentage Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
                 \bigskip
@@ -2287,6 +2254,56 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 \begin{equation}
     J = Sensitivity + Specificity - 1
 \end{equation}
+
+\subsection{Regression formulas}
+
+\subsubsection{Mean Squared Error = Mean Squared Deviation}\label{formula:mse}
+
+\begin{equation}
+    MSE = \frac{\sum_i (y_i - p_i)^2}{n}
+\end{equation}
+
+where $y_i$ and $p_i$ are the true and predicted values for the ith data point and n is the number of data points
+
+\subsubsection{Root Mean Squared Error = Root Mean Squared Deviation}\label{formula:rmse}
+
+\begin{equation}
+    RMSE = \sqrt{\frac{\sum_i (y_i - p_i)^2}{n}}
+\end{equation}
+
+where $y_i$ and $p_i$ are the true and predicted values for the ith data point and n is the number of data points
+
+\subsubsection{Mean Absolute Error}\label{formula:mae}
+
+\begin{equation}
+    MAE = \frac{\sum_i \left|y_i - p_i\right|}{n}
+\end{equation}
+
+where $y_i$ and $p_i$ are the true and predicted values for the ith data point and n is the number of data points
+
+\subsubsection{Mean Absolute Percentage Error}\label{formula:mape}
+
+\begin{equation}
+    MAPE = \frac{1}{n}\sum_i \left|\frac{y_i - p_i}{y_i}\right| \cdot 100
+\end{equation}
+
+where $y_i$ and $p_i$ are the true and predicted values for the ith data point and n is the number of data points
+
+\subsubsection{R-Squared = $R^2$ = Coefficient of determination}\label{formula:r2}
+
+\begin{equation}
+    R2 = 1 - \frac{\sum_i (y_i - p_i)^2}{\sum_i (y_i - m)^2}
+\end{equation}
+
+where $y_i$ and $p_i$ are the true and predicted values for the ith data point, n is the number of data points and $m = \frac{sum yi}{n}$
+
+\subsubsection{Adjusted R-Squared}\label{formula:rss}
+
+\begin{equation}
+    Adjusted\_R2 = 1 - \frac{\sum_i (y_i - p_i)^2 / (n - 1)}{\sum_i (y_i - m)^2 / (n - k - 1)}
+\end{equation}
+
+where $y_i$ and $p_i$ are the true and predicted values for the ith data point, n is the number of data points, $m = \frac{\sum_i y_i}{n}$ and k is the number of independent variables
 
 \subsection{Intersection-over-Union, aka Jaccard Index}\label{formula:iou}
 
