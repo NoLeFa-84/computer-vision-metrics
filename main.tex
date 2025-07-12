@@ -107,60 +107,6 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \bigskip
             \end{enumerate}
 
-        \subsubsection{Metric}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-
-    \subsection{\textit{Object Localization Criteria}}
-        When conducting object detection tasks it is necessary to determine if a predicted object and a reference object are a successful match (Hit, True Positive), or not (Miss, False Positive). This requires an object localization criteria. In addition to the three center-based localization criteria here, you can also use one of the object localization metrics from Section \ref{object_localization} combined with a threshold, above which the predicted object is considered a Hit/True Positive.
-        \subsubsection{Center-cover Criterion}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the ground truth reference object is within the bounding box or mask of the predicted detection; 0 (miss) otherwise.
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the ground truth reference object, which is simple for a bounding box but more complicated for a mask.
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-
-        \subsubsection{Center-hit Criterion}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:} Binary metric: 1 (hit) if the center of the predicted object is within the bounding box or mask of the ground truth reference object; 0 (miss) otherwise.
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center point for the predicted object, which is simple for a bounding box but more complicated for a mask.
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-
-        \subsubsection{Distance-based Hit Criterion}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:} 1 (hit) if the distance $d$ between the bounding box or mask centers of the ground truth reference object and the predicted object are within distance threshold $\tau$; 0 (miss) otherwise.
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:} Requires the calculation of the center points for the ground truth reference object and the predicted object, which is simple for a bounding box but more complicated for a mask.
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
-    \subsection{\textit{Assignment Strategies}}
-        When conducting object detection tasks there can be many predicted objects and ground truth reference objects in a single image. It is thus necessary to perform an assignment step, where each predicted object is paired to a ground truth reference object.
-        \subsubsection{Greedy by Score}
-        \subsubsection{Hungarian Matching}
-
     \subsection{Object classification}
         Assigning a label to an object in an image.
         \subsubsection{Accuracy}
@@ -292,15 +238,37 @@ Here we present a number of tasks in computer vision and detail the metrics appl
     \subsection{Object detection}
         Detecting one or multiple instances of a given object class in an image, outputting for each instance its bounding box and its label. Requires both localizing the instance within the image, and determining the label of the instance.
 
-        When applying metrics each predicted detection must be paired with a ground truth object via an assignment strategy. To determine if the predicted detection-ground truth object matched pair constitutes a  hit (TP) or miss (FP) a localization criteria must be used, such as the center-cover, center-hit, or distance based hit criterion, or Intersection-over-Union (IoU), Box IoU, Mask IoU, or Boundary IoU combined with a threshold to generate a binary output.
-
-        \subsubsection{Precision, Recall}
+        \subsubsection{Precision, Recall}\label{object_detection:precision-recall}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
 
                 See formula in \ref{formula:precision} for precision, in \ref{formula:recall} for recall
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+
+                \begin{itemize}
+                    \item Assignment strategy (for pairing each predicted detection with a ground truth object, if there are several), such as:
+                        \begin{itemize}
+                            \item Greedy by Score
+                            \item Hungarian Matching
+                        \end{itemize}
+                    \item Criterion to determine if the predicted detection / ground truth object matched pair constitutes a successful match (hit, TP) or not (miss, FP), such as:
+                        \begin{itemize}
+                            \item Center-cover criterion: 1 (hit) if the center of the ground truth reference object is within the bounding box or mask of the predicted detection; 0 (miss) otherwise.
+
+                                  \emph{Caveat: Calculating the center point for the ground truth object is simple for a bounding box but more complicated for a mask.}
+                            \item Center-hit criterion: 1 (hit) if the center of the predicted object is within the bounding box or mask of the ground truth reference object; 0 (miss) otherwise.
+
+                                  \emph{Caveat: Calculating the center point for the predicted object is simple for a bounding box but more complicated for a mask.}
+                            \item Distance-based hit criterion: 1 (hit) if the distance $d$ between the bounding box or mask centers of the ground truth reference object and the predicted object are within distance threshold $\tau$; 0 (miss) otherwise.
+                                  \emph{Caveat: Calculating the center points for the ground truth object and the predicted object is simple for a bounding box but more complicated for a mask.}
+                            \item Intersection-over-Union (IoU), as defined in \ref{formula:iou}, with a threshold above which the pair is considered a successful match
+                            \item Box IoU (see \ref{object_localization}), with a threshold above which the pair is considered a successful match
+                            \item Mask IoU (see \ref{object_localization}), with a threshold above which the pair is considered a successful match
+                            \item Boundary IoU (see \ref{object_localization}), with a threshold above which the pair is considered a successful match
+
+                        \end{itemize}
+                \end{itemize}
                 \bigskip
                 \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
                 \bigskip
@@ -315,7 +283,10 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
 
-                For $F_\beta$: $\beta$ (see \ref{formula:fbeta})
+                \begin{itemize}
+                    \item For $F_\beta$: $\beta$ (see \ref{formula:fbeta})
+                    \item Same as for precision and recall in \ref{object_detection:precision-recall}
+                \end{itemize}
                 \bigskip
                 \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
                 \bigskip
