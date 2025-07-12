@@ -54,10 +54,8 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Intersection-over-Union}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                \begin{align}
-                    J(A,B) &= \frac{\left|A \cap B\right|}{\left|A \cup B\right|}\\
-                    &= \frac{\left|A \cap B\right|}{\left|A\right| + \left|B\right| - \left|A \cap B\right|} \label{intersection_over_union}
-                \end{align}
+
+                See formula in \ref{formula:iou}
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -70,7 +68,8 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Box Intersection-over-Union}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                Box-IoU is IoU when the predicted object and ground truth reference objects are delimited by bounding boxes. The metric is calculated using Eq. \ref{intersection_over_union}.
+
+                Box-IoU is IoU when the predicted object and ground truth reference objects are delimited by bounding boxes. The metric is calculated using the formula in \ref{formula:iou}.
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -83,7 +82,8 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Mask Intersection-over-Union}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                Mask-IoU is IoU when the predicted object and ground truth reference objects are delimited by pixel masks. The metric is calculated using Eq. \ref{intersection_over_union}.
+
+                Mask-IoU is IoU when the predicted object and ground truth reference objects are delimited by pixel masks. The metric is calculated using the formula in \ref{formula:iou}.
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -529,7 +529,10 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \textit{Also known as:} Intersection over Union (IoU)
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    The Jaccard index formula is defined as per Equation \ref{intersection_over_union}. An alternative formulation following \cite{long2015fully} is as follows: let $n_{ij}$ be the number of pixels of class $i$ that are labeled as class $j$ (thus making $n_{ii}$ the number of correctly labeled pixels of class $i$). Then let $t_i = \sum_{j} n_{ij}$ be the total number of pixels of class $i$. The Jaccard Index/IoU for one class is thus
+
+                    See formula in \ref{formula:iou}.
+
+                    An alternative formulation following \cite{long2015fully} is as follows: let $n_{ij}$ be the number of pixels of class $i$ that are labeled as class $j$ (thus making $n_{ii}$ the number of correctly labeled pixels of class $i$). Then let $t_i = \sum_{j} n_{ij}$ be the total number of pixels of class $i$. The Jaccard Index/IoU for one class is thus
                     \begin{align}
                         \textrm{IoU}_i = \frac{n_{ii}}{t_i + \sum_j n_{ji} - n_{ii}}
                     \end{align}
@@ -2337,6 +2340,16 @@ Here we present a number of tasks in computer vision and detail the metrics appl
 \begin{itemize}
     \item Hyperparameter $\beta$ which controls the relative importance of Recall versus Precision. $\beta=1$ weights them equally and reduces $F_\beta$ to $F_1$-score as above; $\beta>1$ gives more importance to Recall; and $\beta < 1$ gives more importance to Precision.
 \end{itemize}
+
+\subsection{Intersection-over-Union, aka Jaccard Index}\label{formula:iou}
+
+\begin{align}
+    J(A,B) &= \frac{\left|A \cap B\right|}{\left|A \cup B\right|}\\
+    &= \frac{\left|A \cap B\right|}{\left|A\right| + \left|B\right| - \left|A \cap B\right|}
+\end{align}
+
+
+\clearpage
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
