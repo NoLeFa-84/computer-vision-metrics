@@ -307,29 +307,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
                 \bigskip
             \end{enumerate}
-        \subsubsection{AUROC}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
 
-        \subsubsection{Sensitivity@Specificity}
-            \begin{enumerate}[label=\alph*.]
-                \item \textit{Metric definition and/or formula:}
-                \bigskip
-                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
-                \bigskip
-                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
-                \bigskip
-                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
-                \bigskip
-            \end{enumerate}
         \subsubsection{Expected Calibration Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
@@ -457,12 +435,13 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Haussdorff Distance aka Maximum Symmetric Surface Distance}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
+                    The most general version of the Hausdorff Distance is defined over two non-empty subsets of a metric space. It can thus be defined in $N$-dimensional Euclidian space. Here we assume a two dimensional Euclidean space, and so use the term pixel to denote the subelement of a the 2D data array that is the image, but the formulation would work equally well for voxels of 3D data arrays, or hypervoxels in $N$-dimensional data arrays where $N \gt 3$.  
 
-                    The distance between a voxel $a$ and a set of voxels $B$ is first defined as
+                    The distance between a pixel $a$ and a set of pixels $B$ is first defined as
                     \begin{align}
                         d(a, B) = \min_{b \in B} d(a, b) \label{distance_element_a_to_set_B_minimum}
                     \end{align}
-                    where $d(a, b)$ is the Euclidean distance between two voxels incorporating the real spatial resolution of the image \cite{yeghiazaryan2018family}. \textit{Question: this would thus require depth information; and the calculation would be simple for relatively flat images e.g. dermatology images, but much more difficult for those with wider depth distributions.}
+                    where $d(a, b)$ is the Euclidean distance between two pixels incorporating the real spatial resolution of the image \cite{yeghiazaryan2018family}. \textit{Question: this would thus require depth information; and the calculation would be simple for relatively flat images e.g. dermatology images, but much more difficult for those with wider depth distributions.}
 
                     \begin{align}
                         d_{\textrm{H}}\left(X, Y\right) = \max
@@ -997,6 +976,22 @@ Here we present a number of tasks in computer vision and detail the metrics appl
                 \item \textit{Metric definition and/or formula:}
 
                 See formula in \ref{formula:mae} for Mean Absolute Error, in \ref{formula:mse} for Mean Squared Error, in \ref{formula:rmse} for Root Mean Squared Error, in \ref{formula:nmse} for Normalized Mean Squared Error
+
+                In the context of image similarity, for two $m\times n$ images each with $c$ channels, the Mean Absolute Error can be written as:
+                \begin{align}
+                    \textrm{MAE} = \frac{1}{m n c} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} \sum_{k=0}^{c-1} \left| I_1(i, j, k) - I_2(i, j, k) \right|.
+                \end{align}
+                where indices $i, j$ denote pixel coordinates and $k$ denotes channel number.
+
+                Similarly the Mean Squared Error formula is 
+                \begin{align}
+                    \textrm{MSE} = \frac{1}{m n c} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} \sum_{k=0}^{c-1} \left[ I_1(i, j, k) - I_2(i, j, k) \right]^2
+                \end{align}
+                and the Root Mean Squared Error is 
+                \begin{align}
+                    \textrm{RMSE} = \sqrt{ \frac{1}{m n c} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} \sum_{k=0}^{c-1} \left[ I_1(i, j, k) - I_2(i, j, k) \right]^2 }
+                \end{align}
+
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
@@ -2195,7 +2190,7 @@ where $y_i$ and $p_i$ are the true and predicted values for the ith data point a
     NMSE = \frac{\sum_i (y_i - p_i)^2}{\sum_i (y_i - m)^2}
 \end{equation}
 
-where $y_i$ and $p_i$ are the true and predicted values for the ith data point, n is the number of data points and $m = \frac{sum yi}{n}$
+where $y_i$ and $p_i$ are the true and predicted values for the ith data point, n is the number of data points and $m = \frac{\sum y_i}{n}$
 
 \subsubsection{Mean Absolute Error}\label{formula:mae}
 
