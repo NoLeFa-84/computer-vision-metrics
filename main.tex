@@ -371,16 +371,16 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
                     \begin{align}
-                        DSC = \frac{2\left| X \cap Y \right|}{\left|X\right| + \left|X\right|}
+                        DSC = \frac{2\left| X \cap Y \right|}{\left|X\right| + \left|Y\right|}
                     \end{align}
-                    where $X$ and $Y$ are sets with cardinalities (i.e. number of elements) $\left|X\right|$ and $\left|X\right|$ respectively.
+                    where $X$ and $Y$ are sets with cardinalities (i.e. number of elements) $\left|X\right|$ and $\left|Y\right|$ respectively.
 
-                    For Boolean data the DSC is identical to the $F_1$ score:
-                    \begin{align}
-                        DSC = \frac{2\ \textrm{TP}}{2\ \textrm{TP} + \textrm{FP} + \textrm{FN}}
-                    \end{align}
+                    In the context of semantic segmentation the sets $X$ and $Y$ will respectively be the predicted and ground truth pixels for a single class.
+
+                    When using multiple classes the DSC should be calculated for each class and then averaged together \cite{azad2023loss}. If instead the classes are combined together before the calculation the result will be biased towards the more prevalent class \cite{reinke2021common}.
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+
                 \bigskip
                 \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
                 \bigskip
@@ -435,7 +435,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
         \subsubsection{Haussdorff Distance aka Maximum Symmetric Surface Distance}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
-                    The most general version of the Hausdorff Distance is defined over two non-empty subsets of a metric space. It can thus be defined in $N$-dimensional Euclidian space. Here we assume a two dimensional Euclidean space, and so use the term pixel to denote the subelement of a the 2D data array that is the image, but the formulation would work equally well for voxels of 3D data arrays, or hypervoxels in $N$-dimensional data arrays where $N \gt 3$.  
+                    The most general version of the Hausdorff Distance is defined over two non-empty subsets of a metric space. It can thus be defined in $N$-dimensional Euclidian space. Here we assume a two dimensional Euclidean space, and so use the term pixel to denote the subelement of a the 2D data array that is the image, but the formulation would work equally well for voxels of 3D data arrays, or hypervoxels in $N$-dimensional data arrays where $N > 3$.  
 
                     The distance between a pixel $a$ and a set of pixels $B$ is first defined as
                     \begin{align}
@@ -885,7 +885,7 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \end{enumerate}
 
     \subsection{Image registration}
-        Basic task description.
+        Transforming multiple sets of image data into one common coordinate system. 
         \subsubsection{Mean Squared Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
