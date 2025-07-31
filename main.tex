@@ -885,12 +885,74 @@ Here we present a number of tasks in computer vision and detail the metrics appl
             \end{enumerate}
 
     \subsection{Image registration}
-        Transforming multiple sets of image data into one common coordinate system. 
+        Image registration is the process of estimating a spatial transformation to align two images into a standardized reference frame. These images are generally referred to as the fixed and moving images, with the transformation $\mathcal{T}$ transforming the moving image into the fixed image reference frame.
+
+        The images can come from the same imaging sensor type (unimodal registration), or different sensor types (multimodal registration). 
+
+        The transformations used on the image can be rigid or non-rigid. Rigid transformations are those that preserve all distances. A rigid transformation is a combination of rotation and translation. The restriction of preserving all distances also means that straightness of lines, parallelism of lines, planarity of surfaces, and non-zero angles between straight lines are preserved \cite{fitzpatrick2000image}. 
+
+        Non-rigid transformations can be divided into several subcategories of increasingly relaxed requirements. Scaling transformations does not preserve distances, but does preserve line straightness and parallelism, surface planarity, and angles between straight lines. Affine transformations, which includes rotation, translation, and scaling plus shearing and reflection then allows angles between straight lines to change. Projective transformations remove the restriction on preserving parallelism. Perspective transformations are a subset of projective transformations. Finally, curved transformations do not preserve line straightness \cite{fitzpatrick2000image}. For rigid, affine, and projective transformations the same transformation matrix is applied to all spatial coordinates, while for curved transformations different coordinate regions can have different transformations applied to them \cite{Chen2023ASO}. 
+
+        \subsubsection{Fiducial Registration Error (FRE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                
+
+                Fiducial Registration Error assumes the presence of a set of fiducial reference points which are visible in both images. These fiducial points or fiducials can, for instance, be CT and MRI visible markers attached to bone \cite{maurer1997registration}, or known features already present in the physical setting such as the nose tip, tragus, or nasion \cite{fitzpatrick2010role}. 
+
+                The error with which these fiducials can be localized is known as the \textit{Fiducial Localization Error} (FLE). Generally FLE cannot be directly observed but can be indirectly observed through its impact on downstream registration errors \cite{fitzpatrick2000image}. 
+
+                For the $i$-th individual fiducial the FRE is 
+                \begin{align}
+                    \textbf{FRE}_i = \mathcal{T}\left(\mathbf{x}_i\right) - \mathbf{y}_i
+                \end{align}
+                where $\mathbf{x}_i$ and $\mathbf{y}_i$ are the locations of the fiducial point in views $X$ and $Y$ respectively and $\mathcal{T}$ is the transformation from the $X$ coordinate system to the $Y$ coordinate system. Note that boldface $\textbf{FRE}_i$ is a vector quantity, while regular FRE is the scalar magnitude.
+                
+                
+
+                With $P = \left\{\mathbf{p}_j\right\}$ and $Q = \left\{\mathbf{q}_j\right\}$ as the point sets in the two different reference frames, with $P$ being registered to $Q$ via the transformation $\mathcal{T}$.
+
+                The FRE is then 
+                \begin{align}
+                    \mathrm{FRE} = \sqrt{
+                        \frac{1}{N} \sum_{j=1}^{N} || \mathbf{q}_j - \mathcal{T}(\mathbf{p}_j) ||^2 \label{equation:fre}
+                    }
+                \end{align}
+                where there are $N$ fiducial points in both $P$ and $Q$, including the points used to calculate the registration.
+
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+
+        \subsubsection{Target Registration Error (TRE)}
+            \begin{enumerate}[label=\alph*.]
+                \item \textit{Metric definition and/or formula:}
+                In the context of image registration using fiducial points the Target Registration Error is calculated using equation \ref{equation:fre}, but excluding any points that were used to calculate the registration transformation. Those points not used for the registration calculation can represent surgical targets, hence the name Target Registration Error. Note that TRE and FRE are uncorrelated \cite{fitzpatrick2009fiducial}.
+
+                \bigskip
+                \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
+                \bigskip
+                \item \textit{Typical range of values obtained with this metric on state-of-the-art systems for this particular task:}
+                \bigskip
+                \item \textit{Any other issues or subtleties that should be mentioned regarding this metric when applied to this task:}
+                \bigskip
+            \end{enumerate}
+        
         \subsubsection{Mean Squared Error}
             \begin{enumerate}[label=\alph*.]
                 \item \textit{Metric definition and/or formula:}
 
-                See formula in \ref{formula:mse}
+                See formula in \ref{formula:mse}. In the context of image registration, the formula can be expressed as:
+                \begin{align}
+                    \mathrm{MSE} = \frac{1}{n} \sum_{i=1}^{n} \left( Q_i - \mathcal{T}(P)_i \right)^2
+                \end{align}
+                where the index $i$ runs over the pixels in the coordinates of image $Q$. 
+
                 \bigskip
                 \item \textit{Any further details, hyperparameters, processing steps, underspecification of the formula, context dependencies, or other ambiguities in the metric itself that can affect reproducibility:}
                 \bigskip
